@@ -1,0 +1,25 @@
+{
+  "cap": 125,
+  "features": [
+    "s2",
+    "s3",
+    "s4",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s17",
+    "s20",
+    "s21"
+  ],
+  "rmse_cycles": {
+    "Mean of training RUL": 41.9,
+    "Linear regression": 20.8,
+    "Random forest (100 trees)": 17.3
+  }
+}

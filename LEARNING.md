@@ -10,9 +10,17 @@
 
 ## Where I am
 
-Steps 1 and 2 have starter code. Steps 3 to 5 are not started.
+All 5 steps run. Random forest RMSE is 17.3 cycles on held-out engines (see README).
 
-## Questions I still have
+## Answers so far
 
-- Why split train and test by engine and not by row?
-- Why cap RUL at a maximum value in many papers?
+- Split by engine, not by row: rows from the same engine are near copies of
+  each other. Splitting by row lets the model see the test engine in training,
+  so the error looks better than it really is.
+- Cap RUL: early in life the sensors are flat, so 300 and 200 cycles left look
+  the same. Capping at 125 stops the model from being punished for that.
+
+## Next questions
+
+- Do rolling averages of sensors lower the error?
+- How does the model do on FD002 to FD004 (more operating conditions)?
