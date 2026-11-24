@@ -17,3 +17,15 @@ def add_rul(df, cap=None):
     last = df.groupby("unit")["cycle"].transform("max")
     rul = last - df["cycle"]
     return df.assign(rul=rul if cap is None else rul.clip(upper=cap))
+
+
+def add_rolling_mean(df, columns, window):
+    """Add a rolling mean of each column, computed inside each engine.
+
+    Sensors are noisy from cycle to cycle. Averaging the last `window` cycles
+    smooths the noise so the wear trend is easier to see. groupby("unit") keeps
+    one engine's cycles from mixing into the next engine's average.
+    min_periods=1: the first cycles average over however many exist so far.
+    """
+    rolled = df.groupby("unit")[columns].transform(lambda c: c.rolling(window, min_periods=1).mean())
+    return df.join(rolled.add_suffix(f"_mean{window}"))

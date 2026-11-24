@@ -1,0 +1,11 @@
+{
+  "cap": 125,
+  "model": "random forest, 100 trees",
+  "rmse_cycles": {
+    "Raw sensors only (step 4)": 17.3,
+    "Raw + rolling mean, window 5": 18.1,
+    "Raw + rolling mean, window 10": 20.1,
+    "Raw + rolling mean, window 20": 21.6,
+    "Raw + rolling mean, window 30": 19.1
+  }
+}
